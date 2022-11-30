@@ -1,0 +1,57 @@
+{
+    "movies": [
+        {
+            "id": 1,
+            "title":"The Shawshank Redemption",
+            "opis": "Framed in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates – including an older prisoner named Red – for his integrity and unquenchable sense of hope.",
+            "godina":1994,
+            "ocena": 4.5,
+            "poster":"shorturl.at/dfx49",
+            "link":"https://www.youtube.com/embed/6hB3S9bIaco"
+        },
+        {
+            "id": 2,
+            "title":"The Godfather",
+            "opis": "Framed in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates – including an older prisoner named Red – for his integrity and unquenchable sense of hope.",
+            "godina":1972,
+            "ocena": 4.5,
+            "poster":"shorturl.at/dfx49",
+            "link":"https://www.youtube.com/embed/6hB3S9bIaco"
+        },
+        {
+            "id": 3,
+            "title":"The Dark Knight",
+            "opis": "Framed in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates – including an older prisoner named Red – for his integrity and unquenchable sense of hope.",
+            "godina":2008,
+            "ocena": 4.5,
+            "poster":"shorturl.at/dfx49",
+            "link":"https://www.youtube.com/embed/6hB3S9bIaco"
+        },
+        {
+            "id": 4,
+            "title":"The Lord of the Rings: The Return of the King",
+            "opis": "Framed in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates – including an older prisoner named Red – for his integrity and unquenchable sense of hope.",
+            "godina":2003,
+            "ocena": 4.5,
+            "poster":"shorturl.at/dfx49",
+            "link":"https://www.youtube.com/embed/6hB3S9bIaco"
+        },
+        {
+            "id":5,
+            "title":"Schindler's List",
+            "opis": "Framed in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates – including an older prisoner named Red – for his integrity and unquenchable sense of hope.",
+            "godina":1993,
+            "ocena": 4.5,
+            "poster":"shorturl.at/dfx49",
+            "link":"https://www.youtube.com/embed/6hB3S9bIaco"
+        },{
+            "id":5,
+            "title":"Pulp Fiction",
+            "opis": "Framed in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates – including an older prisoner named Red – for his integrity and unquenchable sense of hope.",
+            "godina":1995,
+            "ocena": 4.5,
+            "poster":"shorturl.at/dfx49",
+            "link":"https://www.youtube.com/embed/6hB3S9bIaco"
+        }
+    ]
+}

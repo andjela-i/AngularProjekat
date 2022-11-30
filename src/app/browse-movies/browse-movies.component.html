@@ -1,0 +1,5 @@
+<button mat-raised-button (click)="ucitajFilmove()">ucitaj pesme</button>
+
+<ul *ngFor='let movie of movie$ | async'>
+    <app-movie-thumb [movie]="movie"></app-movie-thumb>
+</ul>
