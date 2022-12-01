@@ -1,5 +1,7 @@
-<button mat-raised-button (click)="ucitajFilmove()">ucitaj pesme</button>
+<div class="dugme"><button mat-raised-button  (click)="ucitajFilmove()">ucitaj filmove</button></div>
 
-<ul *ngFor='let movie of movie$ | async'>
-    <app-movie-thumb [movie]="movie"></app-movie-thumb>
-</ul>
+<mat-grid-list cols="4" rowHeight="3:4">
+    <ul *ngFor='let movie of movie$ | async'>
+       <mat-grid-tile> <app-movie-thumb [movie]="movie" (onClick)="predstaviFilm(movie)"></app-movie-thumb></mat-grid-tile>
+    </ul>
+  </mat-grid-list>

@@ -15,6 +15,11 @@ import { AppState } from './app.state';
 import { EffectsModule, EffectSources } from '@ngrx/effects';
 import { MoviesEffects } from 'src/store/movies.effects';
 import { MovieThumbComponent } from './movie-thumb/movie-thumb.component';
+import { HttpClientModule } from '@angular/common/http';
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { MovieDetailedComponent } from './movie-detailed/movie-detailed.component';
+import { StoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 @NgModule({
@@ -22,17 +27,25 @@ import { MovieThumbComponent } from './movie-thumb/movie-thumb.component';
     AppComponent,
     NavigacijaComponent,
     BrowseMoviesComponent,
-    MovieThumbComponent
+    MovieThumbComponent,
+    MovieDetailedComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     StoreModule.forRoot<AppState>({movies:moviesReducer}),
     EffectsModule.forRoot([MoviesEffects]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      autoPause: true
+    }),
     BrowserAnimationsModule,
     MatButtonModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
