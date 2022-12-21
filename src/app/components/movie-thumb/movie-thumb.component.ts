@@ -1,6 +1,6 @@
 import { emitDistinctChangesOnlyDefaultValue } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Movie } from '../models/movie';
+import { Movie } from '../../models/movie';
 
 @Component({
   selector: 'app-movie-thumb',

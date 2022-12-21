@@ -1,0 +1,32 @@
+<div class="sve">
+    <mat-card >
+        <mat-card-header>
+            <h3>Create a profile</h3>
+        </mat-card-header>
+    
+    <form [formGroup]="signupForm" (ngSubmit)="signUp()">
+    <mat-card-content>
+      <div class="unos">
+        <mat-form-field>
+          <mat-label>Unesite korisnicko ime</mat-label>
+          <input formControlName="username" #box3 matInput placeholder="Username">
+        </mat-form-field>
+      </div>
+        <div class="unos">
+        <mat-form-field>
+            <mat-label>Unesite email</mat-label>
+            <input formControlName="email" #box1 matInput placeholder="Email" >
+          </mat-form-field>
+        </div>
+        <div class="unos">
+          <mat-form-field>
+            <mat-label>Unesite sifru</mat-label>
+            <input formControlName="password" #box2 matInput input type="password" placeholder="Password">
+          </mat-form-field>
+        </div>
+          <button mat-raised-button color="accent" type="submit">Sign up</button>
+        
+    </mat-card-content>
+  </form>
+    </mat-card>
+</div>

@@ -5,8 +5,8 @@ import { Observable, of } from 'rxjs';
 import { loadMovies, selectMovie } from 'src/store/movies.action';
 import { MoviesState } from 'src/store/movies.reducer';
 import { selectMoviesList } from 'src/store/movies.selector';
-import { AppState } from '../app.state';
-import { Movie } from '../models/movie';
+import { AppState } from '../../app.state';
+import { Movie } from '../../models/movie';
 
 @Component({
   selector: 'app-browse-movies',

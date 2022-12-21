@@ -1,9 +1,11 @@
 import { Component, Input } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { selectMovie } from 'src/store/movies.selector';
 import { selectSelectedMovieId } from 'src/store/movies.selector';
-import { AppState } from '../app.state';
-import { Movie } from '../models/movie';
+import { AppState } from '../../app.state';
+import { Movie } from '../../models/movie';
+import { PopUpComponent } from '../../pop-up/pop-up.component';
 
 @Component({
   selector: 'app-movie-detailed',
@@ -19,7 +21,7 @@ export class MovieDetailedComponent {
     this._movie=value;
   }
 
-  constructor(private store: Store<AppState>){
+  constructor(private store: Store<AppState>, private dialog:MatDialog){
     this.movie={
       id:0,
       title:"",
@@ -43,8 +45,12 @@ export class MovieDetailedComponent {
       this._movie=film
        }
       )
-    
-    
+      
+      
+  }
+
+  openPopUp(){
+    this.dialog.open(PopUpComponent);
   }
 
 }
