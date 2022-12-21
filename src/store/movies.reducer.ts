@@ -3,6 +3,7 @@ import { state } from "@angular/animations";
 import { createEntityAdapter, EntityState } from "@ngrx/entity";
 import { createReducer, on } from "@ngrx/store";
 import { Movie } from "src/app/models/movie";
+import { User } from "src/app/models/user";
 import * as Actions from './movies.action'
 
 /* export interface MoviesState {
@@ -11,7 +12,8 @@ import * as Actions from './movies.action'
 } */
 
 export interface MoviesState extends EntityState<Movie>{
-    selektovaniFilm:number
+    selektovaniFilm:number,
+    korisnik:User
 }
 
 /* export const initialState:MoviesState = {
@@ -22,7 +24,15 @@ export interface MoviesState extends EntityState<Movie>{
 const adapter = createEntityAdapter<Movie>();
 
 export const initialState:MoviesState=adapter.getInitialState({
-    selektovaniFilm:0
+    selektovaniFilm:0,
+    korisnik: {
+        id: 0,
+        username: "",
+        email: "",
+        password: "",
+        favourites: [],
+        reviews: []
+    }
 })
 
 
@@ -40,6 +50,14 @@ export const moviesReducer = createReducer(
             ...state,
             selektovaniFilm:movieId
         }
-    })
+    }),
+    on(Actions.logInSuccess,(state, { user })=>{
+    return{
+        ...state,
+        korisnik:user
+    }
+}
+    
+    )
 )
     

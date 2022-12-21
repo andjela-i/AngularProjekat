@@ -84,6 +84,30 @@
       "favourites": [],
       "reviews": [],
       "id": 14
+    },
+    {
+      "username": "neko",
+      "email": "tamo",
+      "password": "3453453",
+      "favourites": [],
+      "reviews": [],
+      "id": 15
+    },
+    {
+      "username": "qqq",
+      "email": "qqqq",
+      "password": "qqqq",
+      "favourites": [],
+      "reviews": [],
+      "id": 16
+    },
+    {
+      "username": "nekkk",
+      "email": "aaa",
+      "password": "aaa",
+      "favourites": [],
+      "reviews": [],
+      "id": 17
     }
   ]
 }

@@ -32,4 +32,24 @@ export class MoviesEffects{
         );
     }, {dispatch: false})
 
+    logIn$ = createEffect(()=>
+         this.action$.pipe(
+            ofType(MoviesActions.logIn),
+            mergeMap((action) => 
+                this.moviesService.logInUser(action.email, action.password).pipe(
+                    map((users)=>
+                    MoviesActions.logInSuccess({user:users[0]})),
+                    catchError(()=>of({type:"load error"})
+                ))
+            
+            )
+        ));
+    
+    dodajOmiljeni$ = createEffect(()=>
+            this.action$.pipe(
+                ofType(MoviesActions.dodajOmiljeni),
+    )
+    )
+    
+
 }

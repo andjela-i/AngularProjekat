@@ -27,6 +27,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LogInComponent } from './log-in/log-in.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -39,7 +40,8 @@ import { LogInComponent } from './log-in/log-in.component';
     MovieDetailedComponent,
     PopUpComponent,
     SignUpComponent,
-    LogInComponent
+    LogInComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

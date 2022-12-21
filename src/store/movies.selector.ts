@@ -26,3 +26,8 @@ export const selectMovie=createSelector(
     (movies,movieId)=><Movie>movies.entities[movieId]
 )
 
+export const selectProfile = createSelector(
+    selectMoviesFeature,
+    (movies)=>movies.korisnik
+
+)

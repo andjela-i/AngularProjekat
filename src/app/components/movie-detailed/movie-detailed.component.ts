@@ -1,7 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { selectMovie } from 'src/store/movies.selector';
+import { User } from 'src/app/models/user';
+import { dodajOmiljeni } from 'src/store/movies.action';
+import { selectMovie, selectProfile } from 'src/store/movies.selector';
 import { selectSelectedMovieId } from 'src/store/movies.selector';
 import { AppState } from '../../app.state';
 import { Movie } from '../../models/movie';
@@ -15,6 +17,7 @@ import { PopUpComponent } from '../../pop-up/pop-up.component';
 export class MovieDetailedComponent {
 
   _movie:Movie|null=null;
+  user:User|null=null;
 
   @Input()
   set movie(value: Movie | null){
@@ -51,6 +54,20 @@ export class MovieDetailedComponent {
 
   openPopUp(){
     this.dialog.open(PopUpComponent);
+  }
+
+
+  dodajOmiljeni(){
+    this.store.select(selectProfile).subscribe(korisnik=>{
+      this.user=korisnik
+    })
+    if (this._movie&&this.user){
+    const nesto={
+      movieId:this._movie.id,
+      userId:this.user.id
+    }
+    this.store.dispatch(dodajOmiljeni(nesto))
+    }
   }
 
 }
