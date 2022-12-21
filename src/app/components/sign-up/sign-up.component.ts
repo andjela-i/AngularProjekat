@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.state';
 import { addUser } from 'src/store/movies.action';
 import { AngularprojekatService } from "src/app/services/angularprojekat.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -14,7 +15,7 @@ export class SignUpComponent implements OnInit {
 
   public signupForm !: FormGroup<any>;
 
-  constructor(private formBuilder : FormBuilder, private store:Store<AppState>,private service:AngularprojekatService){
+  constructor(private formBuilder : FormBuilder, private store:Store<AppState>,private service:AngularprojekatService,private router:Router){
 
   }
 
@@ -33,11 +34,8 @@ export class SignUpComponent implements OnInit {
 
   signUp(){
     this.store.dispatch(addUser(this.signupForm.value))
-    this.service.addUser(this.signupForm.value)
-    ;
-    console.log(this.signupForm.value);
     this.signupForm.reset();
-
+    this.router.navigate(['/log-in']);
   }
 
 }

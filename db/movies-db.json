@@ -78,10 +78,12 @@
       "reviews": []
     },
     {
-      "username": "sfdgsfd",
-      "email": "sdfgsdgf",
-      "password": "",
-      "id": 5
+      "username": "fsgd",
+      "email": "ggg",
+      "password": "gggg",
+      "favourites": [],
+      "reviews": [],
+      "id": 14
     }
   ]
 }

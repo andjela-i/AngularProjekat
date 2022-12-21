@@ -23,14 +23,13 @@ export class MoviesEffects{
             )
         ))
     
-    addUser$ = createEffect(()=>
-    this.action$.pipe(
-        ofType(MoviesActions.addUser),
-        mergeMap(action=>{
-            return this.moviesService.addUser(action.signupForm)
-        }
-            )
-    )
-    )
+    addUser$ = createEffect(() => { 
+        return this.action$.pipe(
+            ofType(MoviesActions.addUser),
+            mergeMap((action) => {
+                return this.moviesService.addUser(action.username,action.email,action.password).pipe(map((data)=>
+                console.log(data)))})
+        );
+    }, {dispatch: false})
 
 }
