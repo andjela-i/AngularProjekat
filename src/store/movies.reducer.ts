@@ -3,6 +3,7 @@ import { state } from "@angular/animations";
 import { createEntityAdapter, EntityState } from "@ngrx/entity";
 import { createReducer, on } from "@ngrx/store";
 import { Movie } from "src/app/models/movie";
+import { Review } from "src/app/models/review";
 import { User } from "src/app/models/user";
 import * as Actions from './movies.action'
 
@@ -13,17 +14,21 @@ import * as Actions from './movies.action'
 
 export interface MoviesState extends EntityState<Movie>{
     selektovaniFilm:number,
-    korisnik:User
+    korisnik:User,
+    lista: Review[],
+    listaUser: Review[]
 }
+
+
 
 /* export const initialState:MoviesState = {
     lista: [],
     selektovaniFilm: 0
 } */
 
-const adapter = createEntityAdapter<Movie>();
+const adapterMovies = createEntityAdapter<Movie>();  
 
-export const initialState:MoviesState=adapter.getInitialState({
+export const initialState:MoviesState=adapterMovies.getInitialState({
     selektovaniFilm:0,
     korisnik: {
         id: 0,
@@ -32,14 +37,16 @@ export const initialState:MoviesState=adapter.getInitialState({
         password: "",
         favourites: [],
         reviews: []
-    }
+    },
+    lista:[],
+    listaUser:[]
 })
 
 
 export const moviesReducer = createReducer(
     initialState,
     on(Actions.loadMoviesSuccess,(state,{ movies })=>
-        adapter.setAll(movies,state)
+        adapterMovies.setAll(movies,state)
         /* return { 
             ...state,
             lista:movies
@@ -51,13 +58,35 @@ export const moviesReducer = createReducer(
             selektovaniFilm:movieId
         }
     }),
-    on(Actions.logInSuccess,(state, { user })=>{
+    on(Actions.logInSuccess,(state, { user})=>{
     return{
         ...state,
+        korisnik:user,
+    }}),
+    on(Actions.dodajOmiljeniSuccess,(state,{ user })=>{
+        return{
+        ...state,
         korisnik:user
-    }
-}
-    
-    )
+        }
+    }),
+    on(Actions.loadReviewsSuccess,(state, {reviews})=>{
+        return{
+            ...state,
+            lista:reviews
+        }
+    }),
+    on(Actions.reviewUpdateSuccess,(state,{review,user})=>{
+        return{
+            ...state,
+            lista:state.lista.concat(review),
+            korisnik:user
+        }
+    }),
+    on(Actions.loadReviewsUserSuccess,(state,{reviews})=>{
+        return{
+            ...state,
+            listaUser:reviews
+        }
+    })
 )
     

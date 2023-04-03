@@ -28,6 +28,8 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LogInComponent } from './log-in/log-in.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ReviewThumbComponent } from './review-thumb/review-thumb.component';
+import { ReviewPopUpComponent } from './review-pop-up/review-pop-up.component';
 
 
 
@@ -41,7 +43,9 @@ import { ProfileComponent } from './profile/profile.component';
     PopUpComponent,
     SignUpComponent,
     LogInComponent,
-    ProfileComponent
+    ProfileComponent,
+    ReviewThumbComponent,
+    ReviewPopUpComponent
   ],
   imports: [
     BrowserModule,

@@ -12,9 +12,18 @@
        
     </mat-card-content>
     <mat-card-footer style="padding:10px ;">
-        <button mat-raised-button color="primary" (click)="dodajOmiljeni()">Dodaj u omiljene</button>
+        <button mat-raised-button color="primary" (click)="dodajFavourite()">Dodaj u omiljene</button>
         <button mat-raised-button color="accent" (click)="openPopUp()" align="right">Pogledaj trailer</button>
+        <button mat-raised-button color="primary" (click)="openReviewPopUp()" >Ostavi recenziju</button>
         Ocena:{{_movie.ocena}} 
     </mat-card-footer> 
     </mat-card>
+ 
+</div>
+<div >
+<mat-grid-list class="reviews" cols="4" rowHeight="3:4">
+    <ul *ngFor='let review of review$ | async'>
+       <mat-grid-tile> <app-review-thumb [review]="review"></app-review-thumb></mat-grid-tile>
+    </ul>
+  </mat-grid-list>
 </div>

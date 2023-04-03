@@ -18,10 +18,14 @@ export class BrowseMoviesComponent implements OnInit {
   movie$:  Observable<Movie[]>= of([]);
   movies: Movie[]=[];
 
-  constructor(private store:Store<AppState>,private router:Router,private route:ActivatedRoute) { }
+  constructor(private store:Store<AppState>,private router:Router,private route:ActivatedRoute) { 
+    this.ucitajFilmove()
+  }
+
 
   ngOnInit(): void {
-    this.movie$=this.store.select(selectMoviesList)
+    this.movie$=this.store.select(selectMoviesList);
+    console.log(this.movie$)
   
   }
 

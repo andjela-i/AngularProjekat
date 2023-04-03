@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { logIn } from 'src/store/movies.action';
@@ -21,14 +21,20 @@ export class LogInComponent implements OnInit{
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email:[''],
-      password:[''],
+      email: new FormControl('',[Validators.required,Validators.email]),
+      password: new FormControl('',[Validators.required]),
     })
   }
 
   logIn(){
     this.store.dispatch(logIn(this.loginForm.value));
     this.router.navigate(['profile']);
+  }
+
+  get form(): { [key: string]: AbstractControl; }
+  {
+    return this.loginForm.controls;
+  
   }
 
 }

@@ -1,6 +1,22 @@
+
 <div *ngIf="user" class="okvir"  >
-  <p>{{user.username}}</p>
-  <div>
-    {{user.favourites}}
+    <div class="naslov"><h2>{{user.username}}</h2></div>
+
+
+<div>Omiljeni filmovi</div>
+<mat-grid-list cols="4" rowHeight="3:4">
+  <ul *ngFor='let movie of movie$ | async'>
+     <mat-grid-tile> <app-movie-thumb [movie]="movie" (onClick)="predstaviFilm(movie)"></app-movie-thumb></mat-grid-tile>
+  </ul>
+</mat-grid-list>
+<div>Vase recenzije</div>
+<div >
+  <mat-grid-list class="reviews" cols="4" rowHeight="3:4">
+      <ul *ngFor='let review of review$ | async'>
+        
+         <mat-grid-tile> <app-review-thumb [review]="review"></app-review-thumb></mat-grid-tile>
+      </ul>
+    </mat-grid-list>
   </div>
+<p>{{user.reviews}}</p>
 </div>

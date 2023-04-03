@@ -20,6 +20,16 @@ export const selectMoviesList = createSelector(
     .map((movie)=><Movie>movie)
 )
 
+export const selectReviews = createSelector(
+    selectMoviesFeature,
+    (movies)=>movies.lista
+)
+
+export const selectReviewsUser = createSelector(
+    selectMoviesFeature,
+    (movies)=>movies.listaUser
+)
+
 export const selectMovie=createSelector(
     selectMoviesFeature,
     selectSelectedMovieId,

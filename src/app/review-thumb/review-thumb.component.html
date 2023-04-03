@@ -1,0 +1,16 @@
+<div *ngIf="review">
+    <mat-card class="mat-elevation-z8" >
+        <mat-card-header><h2>{{review.username}}</h2></mat-card-header>
+    
+    <mat-card-content >
+
+        <div class="container">
+                <div class="overlay">
+                  <div class="text">{{review.text}}</div>
+             </div>
+        </div>
+        
+        <mat-card-footer class="footer">{{review.title}}</mat-card-footer>
+    </mat-card-content>
+    </mat-card>
+</div>
