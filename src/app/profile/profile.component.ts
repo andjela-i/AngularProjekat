@@ -36,6 +36,7 @@ ngOnInit(): void {
   const unos={
     user:this.user
   }
+  console.log(this.user)
   this.store.dispatch(loadReviewsUser(unos))
   }
 
@@ -54,6 +55,7 @@ ngOnInit(): void {
     this.movie$= this.movie$.pipe(
       map(items=>
         items.filter(item=>this.user?.favourites.includes(item.id))
+      
         )  
     )
     this.review$=this.store.select(selectReviewsUser)

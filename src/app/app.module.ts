@@ -30,7 +30,14 @@ import { LogInComponent } from './log-in/log-in.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ReviewThumbComponent } from './review-thumb/review-thumb.component';
 import { ReviewPopUpComponent } from './review-pop-up/review-pop-up.component';
-
+import { UserListComponent } from './user-list/user-list.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { UpdatePopUpComponent } from './update-pop-up/update-pop-up.component'
+import { MatSelectModule } from '@angular/material/select';
+import { usersReducer } from 'src/store/users.reducer';
+import { movieReviewsReducer } from 'src/store/movieReviews.reducer';
 
 
 @NgModule({
@@ -45,13 +52,15 @@ import { ReviewPopUpComponent } from './review-pop-up/review-pop-up.component';
     LogInComponent,
     ProfileComponent,
     ReviewThumbComponent,
-    ReviewPopUpComponent
+    ReviewPopUpComponent,
+    UserListComponent,
+    UpdatePopUpComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    StoreModule.forRoot<AppState>({movies:moviesReducer}),
+    StoreModule.forRoot<AppState>({movies:moviesReducer,users:usersReducer,movieReviews:movieReviewsReducer}),
     EffectsModule.forRoot([MoviesEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
@@ -67,7 +76,11 @@ import { ReviewPopUpComponent } from './review-pop-up/review-pop-up.component';
     MatGridListModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatSortModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

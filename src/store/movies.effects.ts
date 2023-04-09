@@ -16,12 +16,26 @@ export class MoviesEffects{
     this.action$.pipe(
         ofType(MoviesActions.loadMovies),
         mergeMap(()=>
-            this.moviesService.getAll().pipe(
+            this.moviesService.getAllMovies().pipe(
                 map((movies)=>MoviesActions.loadMoviesSuccess({movies:movies})),
                 catchError(()=>of({type: 'loadError'}))
             )
             )
         ))
+
+    loadUser$ = createEffect(()=>
+    this.action$.pipe(
+        ofType(MoviesActions.loadAllUsers),
+        mergeMap(()=>
+            this.moviesService.getAllUsers().pipe(
+                map((users)=>MoviesActions.loadAllUsersSuccess({users:users})),
+                catchError(()=>of({type:'loadErrorUsers'}))
+            )
+        )
+    )
+    )
+
+
     
     addUser$ = createEffect(() => { 
         return this.action$.pipe(
@@ -38,7 +52,7 @@ export class MoviesEffects{
             mergeMap((action) => 
                 this.moviesService.logInUser(action.email, action.password).pipe(
                     map((users)=>(
-                    MoviesActions.logInSuccess({user:users[0]}))),
+                    MoviesActions.logInSuccess({user:users}))),
                     catchError(()=>of({type:"load error"})
                 ))
             
@@ -51,7 +65,7 @@ export class MoviesEffects{
            mergeMap((action) => 
                this.moviesService.logInUser(action.email, action.password).pipe(
                    map((users)=>(
-                   MoviesActions.loadReviewsUser({user:users[0]}))),
+                   MoviesActions.loadReviewsUser({user:users}))),
                    catchError(()=>of({type:"load error"})
                ))
            
@@ -71,11 +85,25 @@ export class MoviesEffects{
                     )
                 );
 
+    updateUser$ = createEffect(()=>
+        this.action$.pipe(
+            ofType(MoviesActions.updateUser),
+            mergeMap((action)=>
+                this.moviesService.updateUser(action.user.value,action.user.value.id.toString()).pipe(
+                    map((user)=>
+                        MoviesActions.updateUserSuccess({user:user})),
+                        catchError(()=>of({type:"update user error"}))       
+                    )
+                ) 
+            )
+        )
+    
+
     getReview$ = createEffect(()=>
     this.action$.pipe(
         ofType(MoviesActions.loadReviews),
         mergeMap((action)=>
-            this.moviesService.getReviews(action.movieId).pipe(
+            this.moviesService.getReviews(action.movie).pipe(
                 map((data)=>
                 MoviesActions.loadReviewsSuccess({reviews:data})),
                 catchError(()=>of({type:"load error"}))
@@ -88,13 +116,40 @@ export class MoviesEffects{
                     mergeMap((action)=>
                         this.moviesService.addReview(action.user,action.movie,action.review).pipe(
                             map((review)=>
-                            MoviesActions.reviewUpdate({user:action.user,movie:action.movie,review:review})
+                            MoviesActions.addReviewSuccess({review:review})
                             )
                         ))
                 )
     );
 
-    addAReviewUpdate$ = createEffect(()=>
+   /*  updateUserReview$ = createEffect(()=>
+                            this.action$.pipe(
+                                ofType(MoviesActions.updateUsersReviews),
+                                mergeMap((action)=>
+                                this.moviesService.updateUsersReviews(action.user,action.review).pipe(
+                                    map((user)=>
+                                        MoviesActions.updateUsersReviewsSuccess()
+                                    )
+                                )
+                                )
+                            )
+    ); */
+
+    deleteteReview = createEffect(()=>
+                                    this.action$.pipe(
+                                        ofType(MoviesActions.deleteReview),
+                                        mergeMap((action)=>
+                                            this.moviesService.deleteReview(action.review).pipe(
+                                                map((review)=>
+                                                    MoviesActions.deleteReviewSuccess({review:review})
+                                                )
+
+                                            )              
+                                        )
+                                    )
+    )
+
+  /*   addAReviewUpdate$ = createEffect(()=>
                         this.action$.pipe(
                             ofType(MoviesActions.reviewUpdate),
                             mergeMap((action)=>
@@ -106,7 +161,7 @@ export class MoviesEffects{
                             )
 
                         )
-    )
+    ) */
 
     getReviewsUser$ = createEffect(()=>
     this.action$.pipe(

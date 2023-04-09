@@ -12,5 +12,9 @@
         
         <mat-card-footer class="footer">{{review.title}}</mat-card-footer>
     </mat-card-content>
+
+
+    <button mat-raised-button color="primary"  (click)="deleteReview()"     *ngIf="userIsAdmin()">izbrisi komentar</button>
+
     </mat-card>
 </div>

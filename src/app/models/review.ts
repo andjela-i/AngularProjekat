@@ -3,6 +3,7 @@ export interface Review {
     text: string;
     movieId:number;
     username:string;
-    title:string
+    title:string;
+    user:number
     
 }

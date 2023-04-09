@@ -2,6 +2,7 @@
     <mat-toolbar-row>
         <a><span><mat-icon>movie</mat-icon> Filmovi</span></a>
         <div class="prazanProstor"></div>
+        <a *ngIf="isAdmin()" mat-button routerLink="users">Users</a>
          <a mat-button routerLink="browse-movies">Browse movies</a>
          <a mat-button routerLink="profile" >Profile</a>
          <a mat-button routerLink="log-in">Login</a>

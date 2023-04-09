@@ -6,5 +6,5 @@ export interface User {
     email: string;
     password: string;
     favourites:Array<number>,
-    reviews:Array<number>
+    role:string
 }

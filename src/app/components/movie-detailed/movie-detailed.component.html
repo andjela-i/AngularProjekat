@@ -23,7 +23,7 @@
 <div >
 <mat-grid-list class="reviews" cols="4" rowHeight="3:4">
     <ul *ngFor='let review of review$ | async'>
-       <mat-grid-tile> <app-review-thumb [review]="review"></app-review-thumb></mat-grid-tile>
+       <mat-grid-tile> <app-review-thumb (buttonClicked)="parentEventHandler($event)" [review]="review"></app-review-thumb></mat-grid-tile>
     </ul>
   </mat-grid-list>
 </div>

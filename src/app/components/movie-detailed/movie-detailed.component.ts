@@ -7,7 +7,7 @@ import { Review } from 'src/app/models/review';
 import { User } from 'src/app/models/user';
 import { ReviewPopUpComponent } from 'src/app/review-pop-up/review-pop-up.component';
 import { addReview, dodajOmiljeni, loadReviews } from 'src/store/movies.action';
-import { selectMovie, selectProfile, selectReviews } from 'src/store/movies.selector';
+import { selectMovie, selectMovieReviews, selectProfile, selectReviews } from 'src/store/movies.selector';
 import { selectSelectedMovieId } from 'src/store/movies.selector';
 import { AppState } from '../../app.state';
 import { Movie } from '../../models/movie';
@@ -19,6 +19,7 @@ import { PopUpComponent } from '../../pop-up/pop-up.component';
   styleUrls: ['./movie-detailed.component.scss']
 })
 export class MovieDetailedComponent {
+
 
 
   _movie:Movie|null=null;
@@ -52,7 +53,7 @@ export class MovieDetailedComponent {
       email:'',
       password:'',
       favourites:[],
-      reviews:[]
+      role:''
     }
   }
 
@@ -72,12 +73,12 @@ export class MovieDetailedComponent {
       })
       if(this._movie){
       const unos={
-        movieId:this._movie.id
+        movie:this._movie
       }
       this.store.dispatch(loadReviews(unos))
       }
 
-      this.review$=this.store.select(selectReviews);
+      this.review$=this.store.select(selectMovieReviews);
       
   }
 
@@ -96,12 +97,14 @@ export class MovieDetailedComponent {
     });
     popup.afterClosed().subscribe(item=>{
       if(this.user!=null,this._movie){
+
       const input={
         user:this._user,
         movie:this._movie,
         review:item
       }
       this.store.dispatch(addReview(input));
+      this.review$=this.store.select(selectMovieReviews);
     }
     })
   
@@ -128,5 +131,15 @@ export class MovieDetailedComponent {
     }
   }
 
+  parentEventHandler(valueEmited: string) {
+    if(this._movie){
+      const unos={
+        movie:this._movie
+      }
+      this.store.dispatch(loadReviews(unos))
+      }
+
+      this.review$=this.store.select(selectMovieReviews);
+    }
 
 }

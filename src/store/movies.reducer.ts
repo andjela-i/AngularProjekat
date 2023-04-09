@@ -16,7 +16,8 @@ export interface MoviesState extends EntityState<Movie>{
     selektovaniFilm:number,
     korisnik:User,
     lista: Review[],
-    listaUser: Review[]
+    listaUser: Review[],
+    users:User[]
 }
 
 
@@ -36,10 +37,12 @@ export const initialState:MoviesState=adapterMovies.getInitialState({
         email: "",
         password: "",
         favourites: [],
-        reviews: []
+        reviews: [],
+        role:""
     },
     lista:[],
-    listaUser:[]
+    listaUser:[],
+    users:[]
 })
 
 
@@ -86,6 +89,12 @@ export const moviesReducer = createReducer(
         return{
             ...state,
             listaUser:reviews
+        }
+    }),
+    on(Actions.updateUserSuccess,(state,{user})=>{
+        return{
+            ...state,
+            
         }
     })
 )

@@ -23,6 +23,7 @@ export class LogInComponent implements OnInit{
     this.loginForm = this.formBuilder.group({
       email: new FormControl('',[Validators.required,Validators.email]),
       password: new FormControl('',[Validators.required]),
+      role: new FormControl(''),
     })
   }
 
