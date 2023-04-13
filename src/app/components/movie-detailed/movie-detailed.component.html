@@ -12,9 +12,9 @@
        
     </mat-card-content>
     <mat-card-footer style="padding:10px ;">
-        <button mat-raised-button color="primary" (click)="dodajFavourite()">Dodaj u omiljene</button>
-        <button mat-raised-button color="accent" (click)="openPopUp()" align="right">Pogledaj trailer</button>
-        <button mat-raised-button color="primary" (click)="openReviewPopUp()" >Ostavi recenziju</button>
+        <button mat-raised-button color="primary" (click)="dodajFavourite()">{{'BTN_FAVOURITE' | translate}}</button>
+        <button mat-raised-button color="accent" (click)="openPopUp()" align="right">{{'BTN_WATCH_TRAILER' | translate}}</button>
+        <button mat-raised-button color="primary" (click)="openReviewPopUp()" >{{'BTN_REVIEW' | translate}}</button>
         Ocena:{{_movie.ocena}} 
     </mat-card-footer> 
     </mat-card>

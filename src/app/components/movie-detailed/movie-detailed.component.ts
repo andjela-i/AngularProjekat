@@ -12,6 +12,7 @@ import { selectSelectedMovieId } from 'src/store/movies.selector';
 import { AppState } from '../../app.state';
 import { Movie } from '../../models/movie';
 import { PopUpComponent } from '../../pop-up/pop-up.component';
+import { TranslateComponent } from 'src/app/translateService/translate.component';
 
 @Component({
   selector: 'app-movie-detailed',

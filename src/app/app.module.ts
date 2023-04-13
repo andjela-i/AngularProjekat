@@ -15,7 +15,7 @@ import { AppState } from './app.state';
 import { EffectsModule, EffectSources } from '@ngrx/effects';
 import { MoviesEffects } from 'src/store/movies.effects';
 import { MovieThumbComponent } from './components/movie-thumb/movie-thumb.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { MovieDetailedComponent } from './components/movie-detailed/movie-detailed.component';
@@ -38,7 +38,8 @@ import { UpdatePopUpComponent } from './update-pop-up/update-pop-up.component'
 import { MatSelectModule } from '@angular/material/select';
 import { usersReducer } from 'src/store/users.reducer';
 import { movieReviewsReducer } from 'src/store/movieReviews.reducer';
-
+import {TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { APP_TRANSLATION_LOADER_PROVIDER, TranslateComponent } from './translateService/translate.component'
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { movieReviewsReducer } from 'src/store/movieReviews.reducer';
     ReviewThumbComponent,
     ReviewPopUpComponent,
     UserListComponent,
-    UpdatePopUpComponent
+    UpdatePopUpComponent,
+    TranslateComponent
   ],
   imports: [
     BrowserModule,
@@ -80,9 +82,20 @@ import { movieReviewsReducer } from 'src/store/movieReviews.reducer';
     MatPaginatorModule,
     MatTableModule,
     MatSortModule,
-    MatSelectModule
+    MatSelectModule,
+    TranslateModule.forRoot({
+      // could read from localstorage
+      // could use appinitializer to setup translation language
+      defaultLanguage: 'en',
+      loader: APP_TRANSLATION_LOADER_PROVIDER,
+      extend: true,
+      isolate: false
+    })
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
