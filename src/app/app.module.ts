@@ -16,7 +16,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { APP_TRANSLATION_LOADER_PROVIDER } from './services/translation-loader.service';
 import { APP_TRANSLATION_INITIALIZER } from './services/translation-initializer.service';
 import { AppLayoutToolbarComponent } from './features/shared/layout-toolbar/layout-toolbar.component';
-import { MovieModuleModule } from './features/movie/movie-module.module';
+import { AppMovieModule } from './features/movie/movie-module.module';
 import { UserModule } from './features/user/user.module';
 
 @NgModule({
@@ -47,7 +47,7 @@ import { UserModule } from './features/user/user.module';
       isolate: false,
     }),
     AppLayoutToolbarComponent,
-    MovieModuleModule,
+    AppMovieModule,
     UserModule,
   ],
 })

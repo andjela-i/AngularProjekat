@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Movie } from '../../../models/movie';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
+import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -11,12 +12,14 @@ import { MatCardModule } from '@angular/material/card';
   styleUrls: ['./movie-thumb.component.scss'],
   imports:[
     CommonModule,
-    MatCardModule
+    MatCardModule,
+    RouterModule
   ]
 })
 export class MovieThumbComponent implements OnInit {
   @Input()
   movie: Movie | null = null;
+  // TODO: reserved event not be be used like this
   @Output() onClick: EventEmitter<Movie> = new EventEmitter<Movie>();
 
   constructor() {}

@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable, of } from 'rxjs';
+import { Observable, of, switchMap, tap } from 'rxjs';
 import { Review } from 'src/app/models/review';
 import { User } from 'src/app/models/user';
 import { ReviewPopUpComponent } from 'src/app/features/movie/review-pop-up/review-pop-up.component';
@@ -18,6 +18,7 @@ import { AppState } from '../../../app.state';
 import { Movie } from '../../../models/movie';
 import { PopUpComponent } from '../pop-up/pop-up.component';
 import { AppTranslationLoader } from 'src/app/services/translation-loader.service';
+import { AppMovieService } from '../movie.service';
 
 @Component({
   selector: 'app-movie-detailed',
@@ -25,10 +26,26 @@ import { AppTranslationLoader } from 'src/app/services/translation-loader.servic
   styleUrls: ['./movie-detailed.component.scss'],
 })
 export class MovieDetailedComponent {
-  _movie: Movie | null = null;
-  _user: User;
+  _movie: Movie | null = {
+    id: -1,
+    title: '',
+    opis: '',
+    link: '',
+    godina: 0,
+    ocena: 0,
+    poster: '',
+  };
+  _user: User = {
+    id: -1,
+    username: '',
+    email: '',
+    password: '',
+    favourites: [],
+    role: '',
+  };
   reviews: Review[] | null = null;
   review$: Observable<Review[]> = of([]);
+  movie$: Observable<Movie>;
 
   @Input()
   set movie(value: Movie | null) {
@@ -43,25 +60,16 @@ export class MovieDetailedComponent {
   constructor(
     private store: Store<AppState>,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
+    private _movies: AppMovieService
   ) {
-    this.movie = {
-      id: -1,
-      title: '',
-      opis: '',
-      link: '',
-      godina: 0,
-      ocena: 0,
-      poster: '',
-    };
-    this._user = {
-      id: -1,
-      username: '',
-      email: '',
-      password: '',
-      favourites: [],
-      role: '',
-    };
+    this.movie$ = this.route.paramMap.pipe(
+      switchMap((d) => _movies.readMovie(d.get('movieId'))),
+      tap((d) => {
+        this._movie = d;
+      })
+    );
   }
 
   ngOnInit(): void {

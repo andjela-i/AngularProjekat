@@ -13,7 +13,12 @@ const routes: Routes = [
   {path:'sign-up',component:SignUpComponent},
   {path:'log-in',component:LogInComponent},
   {path:'profile',component:ProfileComponent},
-  {path:'users',component:UserListComponent}
+  {path:'users',component:UserListComponent},
+  {
+    path: 'moview',
+    loadChildren: (): any =>
+      import('./features/movie/movie.module').then((m): any => m.AppAdminModule),
+  },
 ];
 
 @NgModule({

@@ -10,18 +10,16 @@ import {
   updateUser,
   updateUsersReviews,
 } from 'src/store/movies.action';
-import { CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-
 
 @Component({
   standalone: true,
   selector: 'app-review-thumb',
   templateUrl: './review-thumb.component.html',
   styleUrls: ['./review-thumb.component.scss'],
-  imports: [MatButtonModule, MatCardModule,
-    CommonModule],
+  imports: [MatButtonModule, MatCardModule, CommonModule],
 })
 export class ReviewThumbComponent implements OnInit {
   @Output()

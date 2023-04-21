@@ -1,4 +1,4 @@
-<div *ngIf="_movie" class="okvir">
+<div *ngIf="movie$ | async as _movie" class="okvir">
   <mat-card class="mat-elevation-z8">
     <mat-card-content>
       <div class="uKartici">

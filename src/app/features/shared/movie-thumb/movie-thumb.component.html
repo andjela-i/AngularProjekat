@@ -8,7 +8,10 @@
         </div>
       </div>
 
-      <mat-card-footer class="footer">Ocena:{{ movie.ocena }}</mat-card-footer>
+      <mat-card-footer class="footer">
+        <div>Ocena:{{ movie.ocena }}</div>
+        <a [routerLink]="['/movies/view', movie.id]">Detalji</a>
+      </mat-card-footer>
     </mat-card-content>
   </mat-card>
 </div>
