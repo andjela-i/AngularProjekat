@@ -1,0 +1,23 @@
+<mat-toolbar color="primary" class="mat-elevation-z8">
+  <mat-toolbar-row>
+    <div><mat-icon>movie</mat-icon><span translate="TB_LNK_MOVIES"></span></div>
+    <div class="prazanProstor"></div>
+
+    <a *ngIf="isAdmin()" mat-button routerLink="users">Users</a>
+    <a mat-button routerLink="browse-movies">{{
+      "NAV_BROWSE_MOVIES" | translate
+    }}</a>
+    <a mat-button routerLink="profile">{{ "NAV_PROFILE" | translate }}</a>
+    <a mat-button routerLink="log-in">{{ "NAV_LOGIN" | translate }}</a>
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>language</mat-icon><span>{{ language }}</span>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="handleLanguageChange('en')">EN</button>
+      <button mat-menu-item (click)="handleLanguageChange('sr')">SR</button>
+    </mat-menu>
+    <a mat-raised-button color="accent" routerLink="sign-up">{{
+      "NAV_SIGN_UP" | translate
+    }}</a>
+  </mat-toolbar-row>
+</mat-toolbar>

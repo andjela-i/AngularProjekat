@@ -1,11 +1,20 @@
 {
-    "BTN_FAVOURITE":"add to favourites",
-    "BTN_WATCH_TRAILER":"watch movie trailer",
-    "BTN_REVIEW":"leave a reivew",
-    "NAV_BROWSE_MOVIES":"browse movies",
-    "NAV_PROFILE":"my profile",
-    "NAV_LOGIN":"log in",
-    "NAV_SIGN_UP":"sign up",
-    "BTN_SERBIAN":"serbian",
-    "BTN_ENGLISH":"english"
+  "TB_LNK_MOVIES": "Movies",
+  "BTN_FAVOURITE": "Add to favourites",
+  "BTN_WATCH_TRAILER": "Watch movie trailer",
+  "BTN_REVIEW": "Leave a reivew",
+  "NAV_BROWSE_MOVIES": "Browse movies",
+  "NAV_PROFILE": "My profile",
+  "NAV_LOGIN": "Log in",
+  "NAV_SIGN_UP": "Sign up",
+  "BTN_SERBIAN": "Serbian",
+  "BTN_ENGLISH": "English",
+  "LBL_LOGIN": "Log into your profile",
+  "LBL_ENTER_EMAIL": "Enter your email",
+  "LBL_ENTER_PASSWORD": "Enter your password",
+  "BTN_LOGIN":"Log in",
+  "LBL_CREATE_PROFILE":"Create a profile",
+  "LBL_ENTER_USERNAME":"Enter a username",
+  "BTN_SIGN_UP":"Sign up"
+
 }

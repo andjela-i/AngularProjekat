@@ -1,0 +1,10 @@
+<mat-grid-list cols="4" rowHeight="3:4">
+  <ul *ngFor="let movie of movie$ | async">
+    <mat-grid-tile>
+      <app-movie-thumb
+        [movie]="movie"
+        (onClick)="predstaviFilm(movie)"
+      ></app-movie-thumb
+    ></mat-grid-tile>
+  </ul>
+</mat-grid-list>

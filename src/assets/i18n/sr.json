@@ -1,11 +1,20 @@
 {
-    "BTN_FAVOURITE":"dodaj u omiljene",
-    "BTN_WATCH_TRAILER":"gledaj trejler",
-    "BTN_REVIEW":"ostavi recenziju",
-    "NAV_BROWSE_MOVIES":"istrazuj filmove",
-    "NAV_PROFILE":"moj profil",
-    "NAV_LOGIN":"uloguj se",
-    "NAV_SIGN_UP":"napravi profil",
-    "BTN_SERBIAN":"srpski",
-    "BTN_ENGLISH":"engleski" 
+  "TB_LNK_MOVIES": "Filmovi",
+  "BTN_FAVOURITE": "Dodaj u omiljene",
+  "BTN_WATCH_TRAILER": "Gledaj trejler",
+  "BTN_REVIEW": "Ostavi recenziju",
+  "NAV_BROWSE_MOVIES": "Istrazuj filmove",
+  "NAV_PROFILE": "Moj profil",
+  "NAV_LOGIN": "Uloguj se",
+  "NAV_SIGN_UP": "Napravi profil",
+  "BTN_SERBIAN": "Srpski",
+  "BTN_ENGLISH": "Engleski",
+  "LBL_LOGIN": "Prijavi se na svoj profil",
+  "LBL_ENTER_EMAIL": "Unesi email",
+  "LBL_ENTER_PASSWORD": "Unesi sifru",
+  "BTN_LOGIN":"Prijavi se",
+  "LBL_CREATE_PROFILE":"Napravi profil",
+  "LBL_ENTER_USERNAME":"Unesite korisnicko ime",
+  "BTN_SIGN_UP":"Napravi profil"
+
 }

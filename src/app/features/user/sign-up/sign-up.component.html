@@ -1,0 +1,85 @@
+<div class="sve">
+  <mat-card>
+    <mat-card-header>
+      <h3>{{ "LBL_CREATE_PROFILE" | translate }}</h3>
+    </mat-card-header>
+
+    <form class="forma" [formGroup]="signupForm" (ngSubmit)="signUp()">
+      <mat-card-content>
+        <div class="unos">
+          <mat-form-field>
+            <mat-label>{{ "LBL_ENTER_USERNAME" | translate }}</mat-label>
+            <input
+              formControlName="username"
+              #box3
+              matInput
+              placeholder="Username"
+            />
+          </mat-form-field>
+          <div
+            *ngIf="
+              signupForm.get('username')?.touched &&
+              !signupForm.get('username')?.valid
+            "
+          >
+            <div *ngIf="signupForm.get('username')?.errors?.['required']">
+              Password is required
+            </div>
+          </div>
+        </div>
+
+        <div class="unos">
+          <mat-form-field>
+            <mat-label>{{ "LBL_ENTER_EMAIL" | translate }}</mat-label>
+            <input formControlName="email" #box1 matInput placeholder="Email" />
+          </mat-form-field>
+          <div
+            *ngIf="
+              signupForm.get('email')?.touched &&
+              !signupForm.get('email')?.valid
+            "
+          >
+            <div *ngIf="signupForm.get('email')?.errors?.['required']">
+              Email is required
+            </div>
+            <div *ngIf="signupForm.get('email')?.errors?.['email']">
+              Invalid email
+            </div>
+          </div>
+        </div>
+
+        <div class="unos">
+          <mat-form-field>
+            <mat-label>{{ "LBL_ENTER_PASSWORD" | translate }}</mat-label>
+            <input
+              formControlName="password"
+              #box2
+              matInput
+              input
+              type="password"
+              placeholder="Password"
+            />
+          </mat-form-field>
+          <div
+            *ngIf="
+              signupForm.get('password')?.touched &&
+              !signupForm.get('password')?.valid
+            "
+          >
+            <div *ngIf="signupForm.get('password')?.errors?.['required']">
+              Password is required
+            </div>
+          </div>
+        </div>
+        <button
+          mat-raised-button
+          color="accent"
+          type="submit"
+          [disabled]="!signupForm.valid"
+        >
+          {{ "BTN_SIGN_UP" | translate }}
+        </button>
+      </mat-card-content>
+    </form>
+  </mat-card>
+</div>

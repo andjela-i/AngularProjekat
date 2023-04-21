@@ -1,11 +1,11 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BrowseMoviesComponent } from './components/browse-movies/browse-movies.component';
-import { MovieDetailedComponent } from './components/movie-detailed/movie-detailed.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { LogInComponent } from './log-in/log-in.component';
-import { ProfileComponent } from './profile/profile.component';
-import { UserListComponent } from './user-list/user-list.component';
+import { BrowseMoviesComponent } from './features/movie/browse-movies/browse-movies.component';
+import { MovieDetailedComponent } from './features/movie/movie-detailed/movie-detailed.component';
+import { SignUpComponent } from './features/user/sign-up/sign-up.component';
+import { LogInComponent } from './features/user/log-in/log-in.component';
+import { ProfileComponent } from './features/user/profile/profile.component';
+import { UserListComponent } from './features/user/user-list/user-list.component';
 
 const routes: Routes = [
   {path:'browse-movies', component:BrowseMoviesComponent},

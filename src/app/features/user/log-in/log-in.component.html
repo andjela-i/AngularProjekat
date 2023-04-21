@@ -1,0 +1,65 @@
+<div class="sve">
+  <mat-card>
+    <mat-card-header>
+      <h3>{{ "LBL_LOGIN" | translate }}</h3>
+    </mat-card-header>
+
+    <form class="forma" [formGroup]="loginForm" (ngSubmit)="logIn()">
+      <mat-card-content>
+        <div class="unos">
+          <mat-form-field>
+            <mat-label>{{ "LBL_ENTER_EMAIL" | translate }}</mat-label>
+            <input
+              formControlName="email"
+              id="email"
+              #box1
+              matInput
+              placeholder="Email"
+            />
+          </mat-form-field>
+          <div
+            *ngIf="
+              loginForm.get('email')?.touched && !loginForm.get('email')?.valid
+            "
+          >
+            <div *ngIf="form['email'].errors?.['required']">
+              Email is required
+            </div>
+            <div *ngIf="form['email'].errors?.['email']">Invalid email</div>
+          </div>
+        </div>
+        <div class="unos">
+          <mat-form-field>
+            <mat-label>{{ "LBL_ENTER_PASSWORD" | translate }}</mat-label>
+            <input
+              formControlName="password"
+              #box2
+              matInput
+              input
+              type="password"
+              placeholder="Password"
+            />
+          </mat-form-field>
+          <div
+            *ngIf="
+              loginForm.get('password')?.touched &&
+              !loginForm.get('password')?.valid
+            "
+          >
+            <div *ngIf="loginForm.get('password')?.errors?.['required']">
+              Password is required
+            </div>
+          </div>
+        </div>
+        <button
+          mat-raised-button
+          color="accent"
+          type="submit"
+          [disabled]="!loginForm.valid"
+        >
+          {{ "BTN_LOGIN" | translate }}
+        </button>
+      </mat-card-content>
+    </form>
+  </mat-card>
+</div>
