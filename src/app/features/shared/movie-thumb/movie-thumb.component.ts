@@ -19,14 +19,12 @@ import { RouterModule } from '@angular/router';
 export class MovieThumbComponent implements OnInit {
   @Input()
   movie: Movie | null = null;
-  // TODO: reserved event not be be used like this
-  @Output() onClick: EventEmitter<Movie> = new EventEmitter<Movie>();
+
 
   constructor() {}
 
   ngOnInit(): void {}
 
   clicked() {
-    if (this.movie) this.onClick.emit(this.movie);
-  }
+   }
 }

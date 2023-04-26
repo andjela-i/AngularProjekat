@@ -5,20 +5,13 @@ import { Store } from '@ngrx/store';
 import { Observable, of, switchMap, tap } from 'rxjs';
 import { Review } from 'src/app/models/review';
 import { User } from 'src/app/models/user';
-import { ReviewPopUpComponent } from 'src/app/features/movie/review-pop-up/review-pop-up.component';
+import { ReviewPopUpComponent } from 'src/app/features/movie/components/review-pop-up/review-pop-up.component';
 import { addReview, dodajOmiljeni, loadReviews } from 'src/store/movies.action';
-import {
-  selectMovie,
-  selectMovieReviews,
-  selectProfile,
-  selectReviews,
-} from 'src/store/movies.selector';
-import { selectSelectedMovieId } from 'src/store/movies.selector';
-import { AppState } from '../../../app.state';
-import { Movie } from '../../../models/movie';
-import { PopUpComponent } from '../pop-up/pop-up.component';
-import { AppTranslationLoader } from 'src/app/services/translation-loader.service';
-import { AppMovieService } from '../movie.service';
+import { selectMovieReviews, selectProfile } from 'src/store/movies.selector';
+import { AppState } from '../../../../app.state';
+import { Movie } from '../../../../models/movie';
+import { PopUpComponent } from '../../components/pop-up/pop-up.component';
+import { AppMovieService } from '../../movie.service';
 
 @Component({
   selector: 'app-movie-detailed',
@@ -68,18 +61,12 @@ export class MovieDetailedComponent {
       switchMap((d) => _movies.readMovie(d.get('movieId'))),
       tap((d) => {
         this._movie = d;
+        console.log(this._movie);
       })
     );
   }
 
   ngOnInit(): void {
-    this.store.select(selectSelectedMovieId).subscribe((selektovaniFilm) => {
-      if (this._movie) this._movie.id = selektovaniFilm;
-    });
-
-    this.store.select(selectMovie).subscribe((film) => {
-      if (this._movie) this._movie = film;
-    });
     this.store.select(selectProfile).subscribe((user) => {
       this.user = user;
     });

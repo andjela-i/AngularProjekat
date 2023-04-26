@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { User } from '../../../models/user';
-import { AppState } from '../../../app.state';
+import { User } from '../../../../models/user';
+import { AppState } from '../../../../app.state';
 import { Store } from '@ngrx/store';
 import { selectAllUsers, selectUsersList } from 'src/store/movies.selector';
 import { loadAllUsers } from 'src/store/movies.action';
@@ -9,7 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatDialog } from '@angular/material/dialog';
-import { UpdatePopUpComponent } from '../update-pop-up/update-pop-up.component';
+import { UpdatePopUpComponent } from '../../components/update-pop-up/update-pop-up.component';
 
 @Component({
   selector: 'app-user-list',

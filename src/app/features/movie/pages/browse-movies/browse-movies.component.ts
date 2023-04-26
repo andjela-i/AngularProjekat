@@ -5,8 +5,9 @@ import { Observable, of } from 'rxjs';
 import { loadMovies, selectMovie } from 'src/store/movies.action';
 import { MoviesState } from 'src/store/movies.reducer';
 import { selectMoviesList } from 'src/store/movies.selector';
-import { AppState } from '../../../app.state';
-import { Movie } from '../../../models/movie';
+import { AppState } from '../../../../app.state';
+import { Movie } from '../../../../models/movie';
+import { AppMovieService } from '../../movie.service';
 
 @Component({
   selector: 'app-browse-movies',
@@ -20,26 +21,25 @@ export class BrowseMoviesComponent implements OnInit {
   constructor(
     private store: Store<AppState>,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private _movies:AppMovieService
   ) {
     this.ucitajFilmove();
   }
 
-  ngOnInit(): void {
-    this.movie$ = this.store.select(selectMoviesList);
-    console.log(this.movie$);
-  }
+  ngOnInit(): void {}
 
   ucitajFilmove() {
+    this.movie$=this._movies.fetchMovies()
     this.store.dispatch(loadMovies());
   }
 
-  predstaviFilm(movie: Movie) {
+  /* predstaviFilm(movie: Movie) {
     this.router.navigate(['/movie-detailed']);
     this.store.dispatch(
       selectMovie({
         movieId: movie.id,
       })
     );
-  }
+  } */
 }

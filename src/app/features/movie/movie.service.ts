@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 export class AppMovieService {
   constructor(private _http: HttpClient) {}
 
-  fetchMovies(params: any): Observable<Movie[]> {
+  fetchMovies(): Observable<Movie[]> {
     return this._http.get<Movie[]>(environment.api + '/movies');
   }
 

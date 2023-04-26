@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AppState } from '../../../app.state';
+import { AppState } from '../../../../app.state';
 import { selectMovie } from 'src/store/movies.selector';
-import { Movie } from '../../../models/movie';
-import { MovieDetailedComponent } from '../movie-detailed/movie-detailed.component';
+import { Movie } from '../../../../models/movie';
+import { MovieDetailedComponent } from '../../pages/movie-detailed/movie-detailed.component';
 import { Store } from '@ngrx/store';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 

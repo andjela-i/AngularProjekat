@@ -9,10 +9,10 @@ import {
   selectReviews,
   selectReviewsUser,
 } from 'src/store/movies.selector';
-import { AppState } from '../../../app.state';
-import { Movie } from '../../../models/movie';
-import { Review } from '../../../models/review';
-import { User } from '../../../models/user';
+import { AppState } from '../../../../app.state';
+import { Movie } from '../../../../models/movie';
+import { Review } from '../../../../models/review';
+import { User } from '../../../../models/user';
 
 @Component({
   selector: 'app-profile',
@@ -43,7 +43,7 @@ export class ProfileComponent implements OnInit {
       this.store.dispatch(loadReviewsUser(unos));
     }
 
-    this.movie$ = this.store.select(selectMoviesList);
+   this.movie$ = this.store.select(selectMoviesList);
     if (this.user == null) {
       this.router.navigate(['/sign-up']);
       console.log(this.user);
@@ -58,12 +58,11 @@ export class ProfileComponent implements OnInit {
         )
       );
       this.review$ = this.store.select(selectReviewsUser);
-      console.log(this.movie$);
     });
   }
 
   predstaviFilm(movie: Movie) {
-    this.router.navigate(['/movie-detailed']);
+    this.router.navigate(['/movie/view',movie.id]);
     this.store.dispatch(
       selectMovie({
         movieId: movie.id,

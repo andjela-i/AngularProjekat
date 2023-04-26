@@ -7,13 +7,13 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { AppState } from '../../../app.state';
-import { AngularprojekatService } from '../../../services/angularprojekat.service';
+import { AppState } from '../../../../app.state';
+import { AngularprojekatService } from '../../../../services/angularprojekat.service';
 import { Store } from '@ngrx/store';
 import { addUser, updateUser } from 'src/store/movies.action';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { inject } from '@angular/core';
-import { User } from '../../../models/user';
+import { User } from '../../../../models/user';
 import { DialogRef } from '@angular/cdk/dialog';
 import * as Actions from 'src/store/movies.action';
 import { CommonModule } from '@angular/common';

@@ -11,7 +11,7 @@ import {
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { logIn } from 'src/store/movies.action';
-import { AppState } from '../../../app.state';
+import { AppState } from '../../../../app.state';
 
 @Component({
   selector: 'app-log-in',

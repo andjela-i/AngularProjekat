@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowseMoviesComponent } from './browse-movies/browse-movies.component';
-import { MovieDetailedComponent } from './movie-detailed/movie-detailed.component';
+import { BrowseMoviesComponent } from './pages/browse-movies/browse-movies.component';
+import { MovieDetailedComponent } from './pages/movie-detailed/movie-detailed.component';
 import { MovieThumbComponent } from '../shared/movie-thumb/movie-thumb.component';
-import { PopUpComponent } from './pop-up/pop-up.component';
-import { ReviewPopUpComponent } from './review-pop-up/review-pop-up.component';
+import { PopUpComponent } from './components/pop-up/pop-up.component';
+import { ReviewPopUpComponent } from './components/review-pop-up/review-pop-up.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -39,11 +39,7 @@ import { AppMovieService } from './movie.service';
     TranslateModule.forChild(),
   ],
   exports: [
-    // TODO: check if needed, only used when required in other modules
-    BrowseMoviesComponent,
-    MovieDetailedComponent,
-    PopUpComponent,
-    ReviewPopUpComponent,
+    MovieDetailedComponent
   ],
 })
 export class AppMovieModule {}
