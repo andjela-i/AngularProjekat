@@ -13,6 +13,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { TranslateModule } from '@ngx-translate/core';
 import { ReviewThumbComponent } from '../shared/review-thumb/review-thumb.component';
 import { AppMovieRoutingModule } from './movie-routing.module';
@@ -32,14 +33,13 @@ import { AppMovieService } from './movie.service';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MatProgressBarModule,
     ReviewThumbComponent,
     MovieThumbComponent,
     ReviewPopUpComponent,
     PopUpComponent,
     TranslateModule.forChild(),
   ],
-  exports: [
-    MovieDetailedComponent
-  ],
+  exports: [MovieDetailedComponent],
 })
 export class AppMovieModule {}

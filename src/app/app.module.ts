@@ -18,6 +18,7 @@ import { APP_TRANSLATION_INITIALIZER } from './services/translation-initializer.
 import { AppLayoutToolbarComponent } from './features/shared/layout-toolbar/layout-toolbar.component';
 import { AppMovieModule } from './features/movie/movie.module';
 import { UserModule } from './features/user/user.module';
+import { AppAuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +28,7 @@ import { UserModule } from './features/user/user.module';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    AppAuthModule,
     StoreModule.forRoot<AppState>({
       movies: moviesReducer,
       users: usersReducer,

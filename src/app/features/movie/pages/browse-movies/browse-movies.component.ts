@@ -7,7 +7,7 @@ import { MoviesState } from 'src/store/movies.reducer';
 import { selectMoviesList } from 'src/store/movies.selector';
 import { AppState } from '../../../../app.state';
 import { Movie } from '../../../../models/movie';
-import { AppMovieService } from '../../movie.service';
+import { AppMovieService, AppMovieStoreService } from '../../movie.service';
 
 @Component({
   selector: 'app-browse-movies',
@@ -15,22 +15,22 @@ import { AppMovieService } from '../../movie.service';
   styleUrls: ['./browse-movies.component.scss'],
 })
 export class BrowseMoviesComponent implements OnInit {
-  movie$: Observable<Movie[]> = of([]);
+  movie$: AppMovieStoreService;
   movies: Movie[] = [];
 
   constructor(
     private store: Store<AppState>,
     private router: Router,
     private route: ActivatedRoute,
-    private _movies:AppMovieService
+    private _movies: AppMovieService
   ) {
+    this.movie$ = new AppMovieStoreService(this._movies);
     this.ucitajFilmove();
   }
 
   ngOnInit(): void {}
 
   ucitajFilmove() {
-    this.movie$=this._movies.fetchMovies()
     this.store.dispatch(loadMovies());
   }
 

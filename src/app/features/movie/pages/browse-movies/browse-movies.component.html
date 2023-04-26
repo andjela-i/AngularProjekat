@@ -1,7 +1,11 @@
-<mat-grid-list cols="4" rowHeight="3:4">
-  <ul *ngFor="let movie of movie$ | async">
-    <mat-grid-tile>
-      <app-movie-thumb [movie]="movie"></app-movie-thumb
-    ></mat-grid-tile>
-  </ul>
-</mat-grid-list>
+<div class="app-page page-browse-movies">
+  <mat-progress-bar
+    mode="indeterminate"
+    *ngIf="movie$.loading$ | async"
+  ></mat-progress-bar>
+  <mat-grid-list cols="4" rowHeight="3:4">
+    <mat-grid-tile *ngFor="let movie of movie$ | async">
+      <app-movie-thumb [movie]="movie"></app-movie-thumb>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

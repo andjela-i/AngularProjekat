@@ -11,7 +11,7 @@ import {
 } from 'src/store/movies.selector';
 import { AppState } from '../../../../app.state';
 import { Movie } from '../../../../models/movie';
-import { Review } from '../../../../models/review';
+import { MovieReview } from '../../../../models/review';
 import { User } from '../../../../models/user';
 
 @Component({
@@ -23,7 +23,7 @@ export class ProfileComponent implements OnInit {
   movie$: Observable<Movie[]> = of([]);
   movies: Movie[] = [];
   favMovie$: Observable<Movie[]> = of([]);
-  review$: Observable<Review[]> = of([]);
+  review$: Observable<MovieReview[]> = of([]);
 
   user: User | null;
 

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Review } from '../../../models/review';
+import { MovieReview } from '../../../models/review';
 import { User } from '../../../models/user';
 import { AppState } from '../../../app.state';
 import { Store } from '@ngrx/store';
@@ -30,7 +30,7 @@ export class ReviewThumbComponent implements OnInit {
   reviewUser: User | null = null;
 
   @Input()
-  review: Review | null = null;
+  review: MovieReview | null = null;
 
   constructor(
     private store: Store<AppState>,

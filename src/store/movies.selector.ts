@@ -1,7 +1,7 @@
 import { createSelector } from "@ngrx/store";
 import { AppState } from "src/app/app.state";
 import { Movie } from "src/app/models/movie";
-import { Review } from "src/app/models/review";
+import { MovieReview } from "src/app/models/review";
 import { User } from "src/app/models/user";
 
 
@@ -24,7 +24,7 @@ export const selectMovieReviews = createSelector(
     selectMovieReviewsFeature,
     (movieReviews)=>movieReviews.ids.map(id=>movieReviews.entities[id])
     .filter((movieReview)=>movieReview!=null)
-    .map((movieReview)=><Review>movieReview)
+    .map((movieReview)=><MovieReview>movieReview)
 )
 
 export const selectUsersList = createSelector(

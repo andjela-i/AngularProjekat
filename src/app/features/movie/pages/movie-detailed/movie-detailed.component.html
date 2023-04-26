@@ -1,40 +1,54 @@
 <div *ngIf="movie$ | async as _movie" class="okvir">
   <mat-card class="mat-elevation-z8">
+    <mat-card-header>
+      <mat-card-title>{{ _movie.title }}</mat-card-title>
+      <mat-card-subtitle>Ocena: {{ _movie.ocena }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-xl-image [src]="_movie.poster" />
     <mat-card-content>
-      <div class="uKartici">
-        <div><img mat-card-xl-image src="{{ _movie.poster }}" /></div>
-
-        <div class="opis">{{ _movie.opis }}</div>
-      </div>
+      <p>
+        {{ _movie.opis }}
+      </p>
     </mat-card-content>
-    <mat-card-footer style="padding: 10px">
-      <button mat-raised-button color="primary" (click)="dodajFavourite()">
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        type="button"
+        color="primary"
+        (click)="dodajFavourite()"
+      >
         {{ "BTN_FAVOURITE" | translate }}
       </button>
       <button
         mat-raised-button
+        type="button"
         color="accent"
         (click)="openPopUp()"
-        align="right"
       >
         {{ "BTN_WATCH_TRAILER" | translate }}
       </button>
-      <button mat-raised-button color="primary" (click)="openReviewPopUp()">
+      <button
+        mat-raised-button
+        type="button"
+        color="primary"
+        (click)="openReviewPopUp()"
+      >
         {{ "BTN_REVIEW" | translate }}
       </button>
-      Ocena:{{ _movie.ocena }}
-    </mat-card-footer>
+    </mat-card-actions>
   </mat-card>
 </div>
 <div>
+  <mat-progress-bar
+    mode="indeterminate"
+    *ngIf="reviews$.loading$ | async"
+  ></mat-progress-bar>
   <mat-grid-list class="reviews" cols="4" rowHeight="3:4">
-    <ul *ngFor="let review of review$ | async">
-      <mat-grid-tile>
-        <app-review-thumb
-          (buttonClicked)="parentEventHandler($event)"
-          [review]="review"
-        ></app-review-thumb
-      ></mat-grid-tile>
-    </ul>
+    <mat-grid-tile *ngFor="let review of reviews$ | async">
+      <app-review-thumb
+        (buttonClicked)="parentEventHandler($event)"
+        [review]="review"
+      ></app-review-thumb
+    ></mat-grid-tile>
   </mat-grid-list>
 </div>

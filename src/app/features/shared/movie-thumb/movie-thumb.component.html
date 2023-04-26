@@ -2,14 +2,22 @@
   <mat-card class="kartica">
     <mat-card-content>
       <div class="container">
-        <img mat-card-image src="{{ movie.poster }}" class="slika" />
+        <img
+          mat-card-image
+          class="slika"
+          [src]="movie.poster"
+          [alt]="movie.title"
+        />
         <div class="overlay">
           <div class="text">{{ movie.title }}</div>
         </div>
       </div>
 
       <mat-card-footer class="footer">
-        <div>Ocena:{{ movie.ocena }}</div>
+        <div>
+          <span>Ocena:</span>
+          <span>{{ movie.ocena }}</span>
+        </div>
         <a [routerLink]="['/movies/view', movie.id]">Detalji</a>
       </mat-card-footer>
     </mat-card-content>

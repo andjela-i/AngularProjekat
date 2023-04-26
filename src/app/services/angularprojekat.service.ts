@@ -5,7 +5,7 @@ import { FormGroup } from '@angular/forms';
 import { combineLatest, filter, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Movie } from '../models/movie';
-import { Review } from '../models/review';
+import { MovieReview } from '../models/review';
 import { Mutable, User } from '../models/user';
 
 @Injectable({
@@ -41,8 +41,8 @@ export class AngularprojekatService {
     );
   }
 
-  deleteReview(review: Review) {
-    return this.httpClient.delete<Review>(
+  deleteReview(review: MovieReview) {
+    return this.httpClient.delete<MovieReview>(
       environment.api + '/reviews/' + '' + review.id
     );
   }
@@ -120,13 +120,13 @@ export class AngularprojekatService {
 
   getReviews(movie: Movie) {
     return this.httpClient
-      .get<Review[]>(environment.api + '/reviews')
+      .get<MovieReview[]>(environment.api + '/reviews')
       .pipe(map((items) => items.filter((item) => movie.title == item.title)));
   }
 
   getReviewsUser(user: User) {
     return this.httpClient
-      .get<Review[]>(environment.api + '/reviews')
+      .get<MovieReview[]>(environment.api + '/reviews')
       .pipe(
         map((items) => items.filter((item) => user.username == item.username))
       );

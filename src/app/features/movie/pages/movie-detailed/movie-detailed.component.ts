@@ -2,16 +2,17 @@ import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable, of, switchMap, tap } from 'rxjs';
-import { Review } from 'src/app/models/review';
+import { Observable, map, shareReplay, switchMap, tap } from 'rxjs';
 import { User } from 'src/app/models/user';
 import { ReviewPopUpComponent } from 'src/app/features/movie/components/review-pop-up/review-pop-up.component';
 import { addReview, dodajOmiljeni, loadReviews } from 'src/store/movies.action';
-import { selectMovieReviews, selectProfile } from 'src/store/movies.selector';
 import { AppState } from '../../../../app.state';
 import { Movie } from '../../../../models/movie';
 import { PopUpComponent } from '../../components/pop-up/pop-up.component';
-import { AppMovieService } from '../../movie.service';
+import {
+  AppMovieReviewStoreService,
+  AppMovieService,
+} from '../../movie.service';
 
 @Component({
   selector: 'app-movie-detailed',
@@ -36,9 +37,9 @@ export class MovieDetailedComponent {
     favourites: [],
     role: '',
   };
-  reviews: Review[] | null = null;
-  review$: Observable<Review[]> = of([]);
+  movieId$: Observable<any>;
   movie$: Observable<Movie>;
+  reviews$: AppMovieReviewStoreService;
 
   @Input()
   set movie(value: Movie | null) {
@@ -57,27 +58,36 @@ export class MovieDetailedComponent {
     private route: ActivatedRoute,
     private _movies: AppMovieService
   ) {
-    this.movie$ = this.route.paramMap.pipe(
-      switchMap((d) => _movies.readMovie(d.get('movieId'))),
+    this.movieId$ = this.route.paramMap.pipe(
+      map((d) => d.get('movieId')),
       tap((d) => {
-        this._movie = d;
-        console.log(this._movie);
-      })
+        this.reviews$.fetch(d);
+      }),
+      shareReplay()
     );
+
+    this.movie$ = this.movieId$.pipe(
+      switchMap((movieId) => _movies.readMovie(movieId)),
+      tap((d) => {
+        this.reviews$.fetch(d);
+        this._movie = d;
+      }),
+      shareReplay()
+    );
+
+    this.reviews$ = new AppMovieReviewStoreService(_movies);
   }
 
   ngOnInit(): void {
-    this.store.select(selectProfile).subscribe((user) => {
-      this.user = user;
-    });
+    // this.store.select(selectProfile).subscribe((user) => {
+    //   this.user = user;
+    // });
     if (this._movie) {
       const unos = {
         movie: this._movie,
       };
       this.store.dispatch(loadReviews(unos));
     }
-
-    this.review$ = this.store.select(selectMovieReviews);
   }
 
   openPopUp() {
@@ -88,6 +98,16 @@ export class MovieDetailedComponent {
   }
 
   openReviewPopUp() {
+    if (!this.user || !this._movie) {
+      return;
+    }
+
+    const reviewPayload = {
+      user: this._user,
+      movie: this._movie,
+      review: '',
+    };
+
     const popup = this.dialog.open(ReviewPopUpComponent, {
       width: '40%',
       height: '300px',
@@ -97,16 +117,11 @@ export class MovieDetailedComponent {
         title: this._movie?.title,
       },
     });
-    popup.afterClosed().subscribe((item) => {
-      if ((this.user != null, this._movie)) {
-        const input = {
-          user: this._user,
-          movie: this._movie,
-          review: item,
-        };
-        this.store.dispatch(addReview(input));
-        this.review$ = this.store.select(selectMovieReviews);
-      }
+
+    popup.afterClosed().subscribe((reviewText) => {
+      reviewPayload.review = reviewText;
+      this.store.dispatch(addReview(reviewPayload));
+      this.reviews$.reload();
     });
   }
 
@@ -114,28 +129,20 @@ export class MovieDetailedComponent {
     if (this._user.id === 0) {
       this.router.navigate(['/log-in']);
       return;
-    } else {
-      console.log(this._user);
-      console.log(this._movie);
+    }
+    console.log(this._user);
+    console.log(this._movie);
 
-      if (this._movie && this._user) {
-        const nesto = {
-          movieId: this._movie.id,
-          user: this._user,
-        };
-        this.store.dispatch(dodajOmiljeni(nesto));
-      }
+    if (this._movie && this._user) {
+      const nesto = {
+        movieId: this._movie.id,
+        user: this._user,
+      };
+      this.store.dispatch(dodajOmiljeni(nesto));
     }
   }
 
   parentEventHandler(valueEmited: string) {
-    if (this._movie) {
-      const unos = {
-        movie: this._movie,
-      };
-      this.store.dispatch(loadReviews(unos));
-    }
-
-    this.review$ = this.store.select(selectMovieReviews);
+    this.reviews$.reload();
   }
 }

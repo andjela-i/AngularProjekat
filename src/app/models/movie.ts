@@ -1,4 +1,4 @@
-export interface Movie {
+export type Movie = {
   id: number;
   title: string;
   opis: string;
@@ -6,4 +6,4 @@ export interface Movie {
   poster: string;
   ocena: number;
   link: string;
-}
+};
